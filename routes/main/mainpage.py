@@ -4,7 +4,7 @@ from jinja2 import TemplateNotFound
 mainpage = Blueprint('mainpage', __name__)
 
 @mainpage.route('/')
-def mainpage():
+def route_mainpage():
    try:
      return render_template('mainpage.html')
    except TemplateNotFound:

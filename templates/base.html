@@ -21,8 +21,8 @@
 
 <body>
 
-   <div class="container-fluid">
-      <nav class="navbar navbar-default" id="main-navbar">
+   <div class="container-fluid no-lr-padding">
+      <nav class="navbar navbar-default navbar-fixed-top" id="main-navbar">
          <div class="container-fluid">
 
             <div class="navbar-header">
@@ -34,7 +34,7 @@
                </button>
 
             <a class="pull-left no-decoration" href="/">
-               <h1>Clan of Outdoorer</h1>
+               <h1 id="main-nav-title">Clan of Outdoorer</h1>
             </a>
             </div>
 
@@ -46,12 +46,17 @@
 
                   <li class="main-navbar-hide"><a href="#">About</a></li>
                   <li class="dropdown">
-                     <a href="#" class="dropdown-doggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
+                     <a href="/allcategories" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
                      <ul class="dropdown-menu">
-                        <li><a href="#">Trekking</a></li>
+                        <li><a href="#">Hiking</a></li>
                         <li><a href="#">Mountain Biking</a></li>
                         <li><a href="#">Snow Sports</a></li>
                         <li><a href="#">Rock Climbing</a></li>
+                        <li><a href="#">Kayaking</a></li>
+                        <li><a href="#">Backpacking</a></li>
+                        <li><a href="#">Diving</a></li>
+                        <li><a href="#">Skydiving</a></li>
+                        <li><a href="#">Fishing</a></li>
                      </ul>
                   </li>
                </ul>
@@ -59,11 +64,11 @@
                <ul class="nav navbar-nav main-navbar-login">
 
                   {% if 'username' not in session %}
-                     <li><a href="#">Sign In</a></li>
-                     <li><a href="#">Log In</a></li>
+                     <li><a href="/signup">Sign Up</a></li>
+                     <li><a href="/login">Login</a></li>
                   {% else %}
                      <li><a href="#">Hi, {{session[username]}}!</a></li>
-                     <li><a href="#">Log Out</a></li>
+                     <li><a href="/logout">Logout</a></li>
                   {% endif %}
                </ul>
             </div>
@@ -71,6 +76,8 @@
          </div>
       </nav>
    </div>
+
+   <div class="container" id="main-nav-placeholder"></div>
 
 
    {% block mainbody %}

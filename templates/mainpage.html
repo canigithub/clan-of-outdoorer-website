@@ -1,5 +1,63 @@
 {% extends "base.html" %}
 
 {% block mainbody %}
-   <h1>Hi~</h1>
+   <div id="home-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+      <div class="carousel-inner" role="listbox">
+         <div class="item active">
+            <div class="carousel-caption home-caption-vertical-center">
+              <div class="home-caption">
+                <h3>Share Your Experiences</h3>
+                <hr class="home-hr-1">
+                <a class="btn btn-primary btn-lg" href="/signup">JOIN US NOW</a>
+                <br>
+                <a class="btn btn-primary btn-lg" href="/allcategories">TAKE A TOUR</a>
+              </div>
+            </div>
+         </div>
+         <div class="item">
+            <div class="carousel-caption home-caption-vertical-center">
+              <div class="home-caption">
+                <h3>Inspire Yourself </h3>
+                <hr class="home-hr-2">
+                <a class="btn btn-primary btn-lg" href="/signup">JOIN US NOW</a>
+                <br>
+                <a class="btn btn-primary btn-lg" href="/allcategories">TAKE A TOUR</a>
+              </div>
+            </div>
+         </div>
+         <div class="item">
+            <div class="carousel-caption home-caption-vertical-center">
+              <div class="home-caption">
+                <h3>Find Companions</h3>
+                <hr class="home-hr-3">
+                <a class="btn btn-primary btn-lg" href="/signup">JOIN US NOW</a>
+                <br>
+                <a class="btn btn-primary btn-lg" href="/allcategories">TAKE A TOUR</a>
+              </div>
+            </div>
+         </div>
+         <div class="item">
+            <div class="carousel-caption home-caption-vertical-center">
+              <div class="home-caption">
+                <h3>Plan Next Adventure</h3>
+                <hr class="home-hr-4">
+                <a class="btn btn-primary btn-lg" href="/signup">JOIN US NOW</a>
+                <br>
+                <a class="btn btn-primary btn-lg" href="/allcategories">TAKE A TOUR</a>
+              </div>
+            </div>
+         </div>
+      </div>
+
+      <a class="carousel-control left" href="#home-carousel" role="button" data-slide="prev">
+         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+         <span class="sr-only">previous</span>
+      </a>
+      <a class="carousel-control right" href="#home-carousel" role="button" data-slide="next">
+         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+         <span class="sr-only">next</span>
+      </a>
+</div>
+
 {% endblock%}
