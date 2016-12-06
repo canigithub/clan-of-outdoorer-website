@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block mainheader %}
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="451186377832-314gircuick6nv3kdlrvdunf1cugr2up.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+{% endblock %}
+
+{% block mainbodytop %}
+<div id="fb-root"></div>
+
+<!-- FB login -->
+<script>
+   window.fbAsyncInit = function() {
+      FB.init({
+         appId      : '109220759570612',
+         cookie     : false,  // enable cookies to allow the server to access the session
+         xfbml      : true,  // parse social plugins on this page
+         version    : 'v2.8' // use graph api version 2.8
+     });
+   };
+
+   (function(d, s, id) {
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=109220759570612";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+   function sendTokenToServer() {
+      var access_token = FB.getAuthResponse()['accessToken'];
+      FB.api('/me', function(response) {
+         var name = response.name.split(' ')[0];
+         var id = response.id;
+         $.ajax({
+            type: 'POST',
+            url: '/third-party-connect?state={{state}}',
+            processData: false,
+            data: JSON.stringify({
+               'name': name,
+               'id': id,
+               'provider': 'facebook',
+               'access_token': access_token}),
+            contentType: 'application/octet-stream; charset=utf-8',
+            success: function(result) {
+              // Handle or verify the server response if necessary.
+               if (result) {
+                  $('#login-follow-up').attr('style', 'display: block');
+                  setTimeout(function() {
+                     window.location.href = "/";
+                  }, 3000);
+
+               } else {
+                  $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+               }
+            }
+         });
+      });
+   }
+
+</script>
+
+{% endblock %}
+
+
+{% block mainbody %}
+<div class="container other-pages">
+   <!-- <h1>Sign Up</h1> -->
+   <h1>{% block logintitle %}
+   {% endblock %}</h1>
+   <div class="well">
+      <form method="post">
+         <input class="otherpages-input" type="text" name="username" value="" placeholder="username">
+         <input class="otherpages-input" type="passowrd" name="password" value="" placeholder="password">
+         <!-- <input class="otherpages-input" type="passowrd" name="verify" value="" placeholder="verify password"> -->
+         {% block loginverify%}
+         {% endblock %}
+         <!-- <input class="otherpages-input" type="text" name="email" value="" placeholder="email (optional)"> -->
+
+         <div class="error">{{error_msg}}</div>
+         <input type="submit" class="btn btn-primary otherpages-input">
+      </form>
+
+      <hr class="otherpages-hr">
+
+      <p>or<p>
+
+      <div id="my-signin2" class="gbtn">button</div>
+
+      <div class="style-me">
+      <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false" onlogin="sendTokenToServer();">Sign in with Facebook</div>
+      </div>
+      <script type="text/javascript">
+         function onSuccess(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            email = profile.getEmail()
+            name = profile.getGivenName()
+            if (!name) {
+               name = profile.getFamilyName()
+            }
+            if (!name) {
+               name = email.split('@')[0]
+            }
+
+            if (googleUser) {
+               $.ajax({
+                  type: 'POST',
+                  url: '/third-party-connect?state={{state}}',
+                  processData: false,  // do not process response into string
+                  contentType: 'application/octet-stream; charset=utf-8',
+                  data: JSON.stringify({'name': name,'email': email, 'provider': 'google'}),
+                  success: function(res) {
+                     if (res) {
+                        $('#login-follow-up').attr('style', 'display: block');
+                        setTimeout(function() {
+                           window.location.href = '/';
+                        }, 3000)
+                     }
+                     else if (authRes['error']) {
+                        console.log("error: " + authRes['error']);
+                     }
+                     else {
+                        $('#result').html('Failed to make a server side call');
+                     }
+                  }
+               });
+            }
+         }
+         function onFailure(error) {
+            console.log(error);
+            alert('error');
+         }
+         function renderButton() {
+            gapi.signin2.render('my-signin2', {
+               'scope': 'profile email',
+               'width': 305,
+               'height': 40,
+               'longtitle': true,
+               'theme': 'dark',
+               'onsuccess': onSuccess,
+               'onfailure': onFailure
+            });
+         }
+
+      </script>
+
+      <div id="login-follow-up" class="login-redirect" style="display: none;">Login Successful! Redirecting...</div>
+
+   </div>
+
+</div>
+{% endblock %}
+
+{% block mainfooter %}
+   <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,8 +1,12 @@
 from flask import Flask
 
-from routes.main.mainpage import mainpage
-
+from routes.home.homeview import homeview
+from routes.user.userview import userview
 
 app = Flask(__name__)
 
-app.register_blueprint(mainpage)
+app.secret_key = 'Copper Mountain'
+app.debug = True
+
+app.register_blueprint(homeview)
+app.register_blueprint(userview)

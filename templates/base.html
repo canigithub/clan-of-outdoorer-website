@@ -10,16 +10,25 @@
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+   {% block mainheader %}
+   {% endblock %}
+
+
    <!-- Fonts -->
    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
 
 
-   <link rel="stylesheet" type="text/css" href="static/css/main.css">
+   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 
 </head>
 
 <body>
+
+   {% block mainbodytop %}
+   {% endblock %}
 
    <div class="container-fluid no-lr-padding">
       <nav class="navbar navbar-default navbar-fixed-top" id="main-navbar">
@@ -44,9 +53,9 @@
                      <a href="/">Home <span class="sr-only">(current)</span></a>
                   </li>
 
-                  <li class="main-navbar-hide"><a href="#">About</a></li>
+                  <li class="main-navbar-hide"><a href="#main-footer">Contact</a></li>
                   <li class="dropdown">
-                     <a href="/allcategories" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></a>
+                     <a href="/allcategories" aria-haspopup="true" aria-expanded="false">Category <span class="caret main-nav-caret"></span></a>
                      <ul class="dropdown-menu">
                         <li><a href="#">Hiking</a></li>
                         <li><a href="#">Mountain Biking</a></li>
@@ -63,12 +72,12 @@
 
                <ul class="nav navbar-nav main-navbar-login">
 
-                  {% if 'username' not in session %}
+                  {% if 'name' not in session %}
                      <li><a href="/signup">Sign Up</a></li>
-                     <li><a href="/login">Login</a></li>
+                     <li><a href="/login">Log In</a></li>
                   {% else %}
-                     <li><a href="#">Hi, {{session[username]}}!</a></li>
-                     <li><a href="/logout">Logout</a></li>
+                     <li class="main-nav-caret"><a href="#">Hi, {{session['name']}}!</a></li>
+                     <li><a href="/logout">Log Out</a></li>
                   {% endif %}
                </ul>
             </div>
@@ -84,9 +93,50 @@
    {% endblock %}
 
 
+   <footer>
+      <div class="container" id="main-footer">
+         <br>
+         <hr>
+         <br>
+         <a href="https://www.linkedin.com/in/nengyun-zhang">
+            <i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i>
+         </a>
+         <a href="https://github.com/canigithub">
+            <i class="fa fa-github-square fa-3x" aria-hidden="true"></i>
+         </a>
+
+         <a href="https://plus.google.com/111446758210379849193">
+            <i class="fa fa-google-plus-square fa-3x" aria-hidden="true"></i>
+         </a>
+
+         <a href="https://www.facebook.com/nengyun.zhang.562">
+            <i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i>
+         </a>
+
+         <br>
+         <br>
+         <p>This Website is Designed and Implemented by Nengyun Zhang.</p>
+         <p>&copy; 2016 Nengyun Zhang</p>
+      </div>
+   </footer>
+
+   {% block mainfooter %}
+   {% endblock %}
+
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+      <!-- <div class = 'flash'>
+         {% with messages = get_flashed_messages() %}
+            {% if messages %}
+               <ul>
+                  {% for message in messages %}
+                     <li> <strong> {{ message }} </strong> </li>
+                  {% endfor %}
+               </ul>
+            {% endif %}
+         {% endwith %}
+      </div> -->
 
 </body>
 </html>

@@ -9,9 +9,13 @@
               <div class="home-caption">
                 <h3>Share Your Experiences</h3>
                 <hr class="home-hr-1">
+                {% if 'name' not in session %}
                 <a class="btn btn-primary btn-lg" href="/signup">JOIN US NOW</a>
                 <br>
                 <a class="btn btn-primary btn-lg" href="/allcategories">TAKE A TOUR</a>
+                {% else %}
+                <a class="btn btn-primary btn-lg" href="/allcategories">EXPLORE FEATURES</a>
+                {% endif %}
               </div>
             </div>
          </div>
@@ -20,9 +24,13 @@
               <div class="home-caption">
                 <h3>Inspire Yourself </h3>
                 <hr class="home-hr-2">
+                {% if 'name' not in session %}
                 <a class="btn btn-primary btn-lg" href="/signup">JOIN US NOW</a>
                 <br>
                 <a class="btn btn-primary btn-lg" href="/allcategories">TAKE A TOUR</a>
+                {% else %}
+                <a class="btn btn-primary btn-lg" href="/allcategories">EXPLORE FEATURES</a>
+                {% endif %}
               </div>
             </div>
          </div>
@@ -31,9 +39,13 @@
               <div class="home-caption">
                 <h3>Find Companions</h3>
                 <hr class="home-hr-3">
+                {% if 'name' not in session %}
                 <a class="btn btn-primary btn-lg" href="/signup">JOIN US NOW</a>
                 <br>
                 <a class="btn btn-primary btn-lg" href="/allcategories">TAKE A TOUR</a>
+                {% else %}
+                <a class="btn btn-primary btn-lg" href="/allcategories">EXPLORE FEATURES</a>
+                {% endif %}
               </div>
             </div>
          </div>
@@ -42,9 +54,13 @@
               <div class="home-caption">
                 <h3>Plan Next Adventure</h3>
                 <hr class="home-hr-4">
+                {% if 'name' not in session %}
                 <a class="btn btn-primary btn-lg" href="/signup">JOIN US NOW</a>
                 <br>
                 <a class="btn btn-primary btn-lg" href="/allcategories">TAKE A TOUR</a>
+                {% else %}
+                <a class="btn btn-primary btn-lg" href="/allcategories">EXPLORE FEATURES</a>
+                {% endif %}
               </div>
             </div>
          </div>

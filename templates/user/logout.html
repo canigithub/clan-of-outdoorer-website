@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block mainheader %}
+<meta name="google-signin-client_id" content="451186377832-314gircuick6nv3kdlrvdunf1cugr2up.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+{% endblock %}
+
+{% block mainbody %}
+   <div class="container other-pages">
+      <h1>Log Out</h1>
+      <div class="well well-short">
+         <p>Are You Sure You Want To Log Out?<p>
+         <form action="/" class="form-short">
+            <button type="submit" class="btn btn-primary otherpages-input">Go Back</button>
+         </form>
+         <form method="post" class="form-short">
+            <button type="submit" class="btn btn-danger otherpages-input" onclick="signOut('{{provider}}')">Log Out</button>
+         </form>
+         <div id="logout-follow-up" class="login-redirect" style="display: none;">Log out successfully! Redirecting...</div>
+      </div>
+
+   </div>
+
+   <script type="text/javascript">
+      function signOut(type) {
+
+         $('#logout-follow-up').attr('style', 'display: block');
+
+         console.log('provider', type);
+
+         if (type === 'google') {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+               console.log('Google user signed out.');
+            });
+         }
+         else if (type === 'facebook') {
+          // incase logout all user's facebook account, stop logout fb.
+            // FB.logout(function(response) {
+            //   console.log('Facebook user signed out.');
+            // });
+         }
+     }
+
+     // since login and logout are not same page, so need to load auth2 manually
+     function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
+    }
+   </script>
+
+
+{% endblock %}
+
+
+{% block mainfooter %}
+   <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+{% endblock %}
+
+
+
+
+
+
+
