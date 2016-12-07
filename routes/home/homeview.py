@@ -19,15 +19,15 @@ def route_welcomepage():
 @homeview.route('/catalog')
 def route_catalogpage():
    items = []
-   items.append(CataItem('HIKING', 'static/img/cata-it-img-hiking.jpg',
+   items.append(CataItem('Hiking', 'static/img/cata-it-img-hiking.jpg',
       'hiking', '/catalog/hiking'))
-   items.append(CataItem('MOUNTAIN BIKING', 'static/img/cata-it-img-biking.jpg',
+   items.append(CataItem('Mountain Biking', 'static/img/cata-it-img-biking.jpg',
       'mountain biking', '/catalog/biking'))
-   items.append(CataItem('SNOW SPORTS', 'static/img/cata-it-img-snow.jpg',
+   items.append(CataItem('Snow Sports', 'static/img/cata-it-img-snow.jpg',
     'snow sports', '/catalog/snow'))
-   items.append(CataItem('ROCK CLIMBING', 'static/img/cata-it-img-rock.jpg',
+   items.append(CataItem('Rock Climbing', 'static/img/cata-it-img-rock.jpg',
       'rock climbing', '/catalog/rock'))
-   items.append(CataItem('KAYAKING', 'static/img/cata-it-img-kayaking.jpg',
+   items.append(CataItem('Kayaking', 'static/img/cata-it-img-kayaking.jpg',
       'kayaking', '/catalog/kayaking'))
    items.append(CataItem('Camping', 'static/img/cata-it-img-camping.jpg',
       'camping', '/catalog/camping'))
@@ -35,7 +35,7 @@ def route_catalogpage():
       'diving', '/catalog/diving'))
    items.append(CataItem('Skydiving', 'static/img/cata-it-img-skydiving.jpg',
       'skydiving', '/catalog/skydiving'))
-   items.append(CataItem('FISHING', 'static/img/cata-it-img-fishing.jpg',
+   items.append(CataItem('Fishing', 'static/img/cata-it-img-fishing.jpg',
       'fishing', '/catalog/fishing'))
    return render_template('catalog.html', cata_items=items)
 
