@@ -86,7 +86,8 @@ def route_signuppage():
       session['provider'] = 'myweb'
 
       # TODO: modify here to redirect to login
-      return redirect(url_for('homeview.route_welcomepage'))
+      time.sleep(1.2)
+      return redirect(url_for('homeview.route_homepage'))
 
    else:
       abort(405)  # method not allowed
@@ -115,7 +116,8 @@ def route_loginpage():
       session['user_id'] = user.key().id()
       session['provider'] = 'myweb'
 
-      return redirect(url_for('homeview.route_welcomepage'))
+      time.sleep(1.2)
+      return redirect(url_for('homeview.route_homepage'))
 
    else:
       abort(405)  # method not allowed
@@ -133,7 +135,7 @@ def route_logoutpage():
       session.pop('user_id')
       # TODO: add flash
 
-      time.sleep(3)
+      time.sleep(1.2)
       return redirect(url_for('homeview.route_homepage'))
 
    else:

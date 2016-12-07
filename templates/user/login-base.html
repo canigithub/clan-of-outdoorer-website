@@ -49,7 +49,7 @@
                   $('#login-follow-up').attr('style', 'display: block');
                   setTimeout(function() {
                      window.location.href = "/";
-                  }, 3000);
+                  }, 1200);
 
                } else {
                   $('#result').html('Failed to make a server-side call. Check your configuration and console.');
@@ -72,14 +72,14 @@
    <div class="well">
       <form method="post">
          <input class="otherpages-input" type="text" name="username" value="" placeholder="username">
-         <input class="otherpages-input" type="passowrd" name="password" value="" placeholder="password">
+         <input class="otherpages-input" type="password" name="password" value="" placeholder="password">
          <!-- <input class="otherpages-input" type="passowrd" name="verify" value="" placeholder="verify password"> -->
          {% block loginverify%}
          {% endblock %}
          <!-- <input class="otherpages-input" type="text" name="email" value="" placeholder="email (optional)"> -->
 
          <div class="error">{{error_msg}}</div>
-         <input type="submit" class="btn btn-primary otherpages-input">
+         <input type="submit" class="btn btn-primary otherpages-input" onclick="login_func()">
       </form>
 
       <hr class="otherpages-hr">
@@ -115,7 +115,7 @@
                         $('#login-follow-up').attr('style', 'display: block');
                         setTimeout(function() {
                            window.location.href = '/';
-                        }, 3000)
+                        }, 1200)
                      }
                      else if (authRes['error']) {
                         console.log("error: " + authRes['error']);
@@ -150,6 +150,11 @@
    </div>
 
 </div>
+<script type="text/javascript">
+   function login_func() {
+      $('#login-follow-up').attr('style', 'display: block');
+   }
+</script>
 {% endblock %}
 
 {% block mainfooter %}

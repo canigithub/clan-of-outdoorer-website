@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+
+   <div class="container catalog-page">
+
+   <div class="jumbotron">
+      <h1>Welcome to <strong>Clan of Outdoorer<strong></h1>
+      <p>Share experiences and Find affordable equipments here</p>
+   </div>
+
+
+   <div class="container no-lr-padding catalog-body">
+      <div class="row text-center">
+         {% for item in cata_items %}
+            <h2>{{item.render() | safe}}</h2>
+         {% endfor %}
+      </div>
+   </div>
+
+   </div>
+
+{% endblock%}

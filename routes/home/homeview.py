@@ -14,3 +14,48 @@ def route_homepage():
 @homeview.route('/welcome')
 def route_welcomepage():
    return render_template('welcome.html')
+
+
+@homeview.route('/catalog')
+def route_catalogpage():
+   items = []
+   items.append(CataItem('HIKING', 'static/img/cata-it-img-hiking.jpg',
+      'hiking', '/catalog/hiking'))
+   items.append(CataItem('MOUNTAIN BIKING', 'static/img/cata-it-img-biking.jpg',
+      'mountain biking', '/catalog/biking'))
+   items.append(CataItem('SNOW SPORTS', 'static/img/cata-it-img-snow.jpg',
+    'snow sports', '/catalog/snow'))
+   items.append(CataItem('ROCK CLIMBING', 'static/img/cata-it-img-rock.jpg',
+      'rock climbing', '/catalog/rock'))
+   items.append(CataItem('KAYAKING', 'static/img/cata-it-img-kayaking.jpg',
+      'kayaking', '/catalog/kayaking'))
+   items.append(CataItem('Camping', 'static/img/cata-it-img-camping.jpg',
+      'camping', '/catalog/camping'))
+   items.append(CataItem('Diving', 'static/img/cata-it-img-diving.jpg',
+      'diving', '/catalog/diving'))
+   items.append(CataItem('Skydiving', 'static/img/cata-it-img-skydiving.jpg',
+      'skydiving', '/catalog/skydiving'))
+   items.append(CataItem('FISHING', 'static/img/cata-it-img-fishing.jpg',
+      'fishing', '/catalog/fishing'))
+   return render_template('catalog.html', cata_items=items)
+
+
+
+
+class CataItem():
+   '''
+   CataItem: contain contents of items on catalog page.
+   '''
+   def __init__(self, title, img_url, alt, link_url):
+      self.title = title
+      self.img_url = img_url
+      self.alt = alt
+      self.link_url = link_url
+
+
+   def render(self):
+      '''
+      render the html for the current item
+      '''
+      return render_template('cataitem.html', title=self.title, img_url=self.img_url,
+         alt=self.alt, link_url=self.link_url)
