@@ -4,9 +4,11 @@ body {
    /*font-family: 'Josefin Sans', sans-serif;*/
    font-family: 'Gloria Hallelujah', cursive;
    /*font-family: 'Armata', sans-serif;*/
-   /*font-family: 'Courgette', cursive;*/
 
+}
 
+.functional-text {
+  font-family: 'Armata', sans-serif;
 }
 
 .no-padding {
@@ -332,6 +334,7 @@ footer i {
 /***** Ohter page start *****/
 .other-pages {
   margin-top: 20px;
+  font-family: 'Armata', sans-serif;
 }
 
 .other-pages h1 {
@@ -409,7 +412,7 @@ footer i {
 /***** All categories page start *****/
 
 .catalog-page {
-  max-width: 850px;
+  max-width: 1000px;
 }
 
 .catalog-page > .jumbotron {
@@ -422,7 +425,26 @@ footer i {
 }
 
 .catalog-page > .jumbotron > h1 {
-  font-size: 3.2em;
+  font-size: 3.6em;
+  margin-bottom: 25px;
+}
+
+.catalog-page > .jumbotron p {
+  margin-bottom: 40px;
+}
+
+.catalog-page > .jumbotron a {
+  line-height: 30px;
+  padding-left: 60px;
+  padding-right: 60px;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  margin-bottom: 15px;
+}
+.catalog-page > .jumbotron a:hover {
+  color: #2c3e50;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .cata-item {
