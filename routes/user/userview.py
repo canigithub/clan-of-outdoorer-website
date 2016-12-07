@@ -76,6 +76,7 @@ def route_signuppage():
          return render_template('user/signup.html', state=state, error_msg='passwords not match')
 
       if User.by_username(username):
+         # check if username already exists
          return render_template('user/signup.html', state=state, error_msg='username already exists')
 
       user = User.create(username=username, passwd=password)
